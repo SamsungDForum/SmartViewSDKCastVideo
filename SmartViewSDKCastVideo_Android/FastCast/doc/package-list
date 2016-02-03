@@ -1,0 +1,5 @@
+com.samsung.fastcast
+com.samsung.fastcast.exceptions
+com.samsung.fastcast.model
+com.samsung.fastcast.msgs
+com.samsung.fastcast.statemachine
