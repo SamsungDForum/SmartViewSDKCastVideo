@@ -234,6 +234,7 @@ enum CastState{
     castSlider.enabled = NO;
 
     int milisecond = castSlider.value*totalTimeMiliSecond;
+    castPlayTimeLabel.text = [Util timeStringFromInteger:milisecond];
     
     NSString *json = [NSString stringWithFormat:@"{\"position\":%d}", milisecond];
     NSLog(@"======>onSliderValueChange:json: %@", json);
@@ -462,10 +463,13 @@ enum CastState{
 - (void)handleNotification:(NSNotification*)noti {
     NSLog(@"Got notified: %@", noti.name);
     if ([noti.name isEqualToString:USER_NOTIFICATION_DISCONNECTED] ) {
-        castIcon.selected = NO;
-        [DataManager getInstance].isConnectedTvApp = NO;
-        [self updateTvStateIcon];
-        [self castIconAnimate:NO];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            castIcon.selected = NO;
+            [DataManager getInstance].isConnectedTvApp = NO;
+            [self updateTvStateIcon];
+            [self castIconAnimate:NO];
+        });
         
     }else if ([noti.name isEqualToString:USER_NOTIFICATION_CONNECTING] ) {
         [self castIconAnimate:YES];
@@ -781,7 +785,6 @@ enum CastState{
         castPlayPauseButton.selected = YES;
         
         int ti = [[dic objectForKey:@"position"]intValue];
-        castPlayTimeLabel.text = [Util timeStringFromInteger:ti];
         lastPlaybackMiliSecondForLocalPlay = ti;
         
         int ti2 = [[dic objectForKey:@"totalTime"]intValue];
@@ -794,6 +797,8 @@ enum CastState{
             }
             sliderValue = (float)ti/ti2;
             [castSlider setValue:sliderValue animated:NO];
+            castPlayTimeLabel.text = [Util timeStringFromInteger:ti];
+
         }
         position = ti;
         

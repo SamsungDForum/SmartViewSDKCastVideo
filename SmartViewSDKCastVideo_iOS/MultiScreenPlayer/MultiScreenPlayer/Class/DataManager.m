@@ -81,8 +81,11 @@ static DataManager* instance = nil;
             [_app connect:dic];
             
         }else{
+            
             NSLog(@"app start: FAIL!!!!!!!!!");
+            [self notify:USER_NOTIFICATION_DISCONNECTED];
             [Util showSimpleMessage:@"App not found" withText:@"Application on TV not found"];
+
         }
     }];
     
