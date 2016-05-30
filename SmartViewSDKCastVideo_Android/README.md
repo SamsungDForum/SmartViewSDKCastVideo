@@ -4,6 +4,15 @@ Smart View SDK Reference app to cast video
 ## 1.	Introduction
 This document shows how to build simple VOD Multi Screen application using Multi Screen Framework 2.0. Thanks to FastCast library described in other document this task should be easy to perform on any existing VOD application. 
 
+###How to import android studio
+---
+1. Select "import project(Eclipse ADT,Gradle,etc..)
+2. Choose "FastCast-Demo" folder
+3. Android stuio change greadle style automatically
+4. Create libs folder and copy android-support-v4.jar original folder
+5. Build & run
+
+
 ###Prerequisites
 
 ----------
@@ -18,12 +27,6 @@ Sample application shows basic usage of FastCast library in standard VOD applica
 • When application is not connected, player view plays video content in local mobile device. Application behaves as simple media player. 
 
 • When application is connected to TV it displays remote player that controls TVs playback. In this mode, mobile user can cast videos to TV, control TVs playback and volume, and reclaim videos from TV back to mobile device. 
-
-### Main application components
-
-----------
-
-![](diagram01.png)
 
 
 Diagram 1 - Application components diagram
