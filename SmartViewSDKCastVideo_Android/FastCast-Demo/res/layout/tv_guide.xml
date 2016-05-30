@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical"    
+    android:padding="10dp"
+     >
+
+    <TextView
+        android:textAppearance="@android:style/TextAppearance.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tvguide_subtitle"
+        android:textColor="@android:color/secondary_text_light" />
+    
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:textAppearance="@android:style/TextAppearance.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tvguide_intro"
+        android:textColor="@android:color/secondary_text_light" />
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/step1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:textAppearance="@android:style/TextAppearance.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvguide_step1"
+            android:textColor="@android:color/secondary_text_light" />
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:textAppearance="@android:style/TextAppearance.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvguide_step1_info"
+            android:textColor="@android:color/secondary_text_light" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/step2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:textAppearance="@android:style/TextAppearance.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvguide_step2"
+            android:textColor="@android:color/secondary_text_light" />
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:textAppearance="@android:style/TextAppearance.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvguide_step2_info"
+            android:textColor="@android:color/secondary_text_light" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:id="@+id/step3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:textAppearance="@android:style/TextAppearance.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvguide_step3"
+            android:textColor="@android:color/secondary_text_light" />
+
+        <LinearLayout
+            android:layout_marginLeft="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:textAppearance="@android:style/TextAppearance.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tvguide_step3_info"
+                android:textColor="@android:color/secondary_text_light" />
+
+            <TextView
+                android:id="@+id/tvGuideLink"
+                android:textAppearance="@android:style/TextAppearance.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tvguide_golink"
+                android:textColor="@android:color/secondary_text_light" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <RelativeLayout
+        
+        android:layout_width="match_parent"
+        android:layout_height="60dp"        
+        >
+        
+        <ImageView 
+            android:id="@+id/headerIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"            
+            android:layout_margin="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_cast_blue_24dp"                       
+            />
+        
+        <TextView 
+            android:id="@+id/headerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/headerIcon"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:text="@string/devicedialog_title"
+            android:textColor="@android:color/holo_blue_light"
+            />
+        
+        <ProgressBar
+            android:id="@+id/devices_dialog_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:indeterminate="true"
+            android:visibility="gone"
+            />                
+            
+    </RelativeLayout>
+    
+    <LinearLayout 
+        android:layout_height="2dp"
+        android:layout_width="match_parent"
+        android:background="@android:color/holo_blue_light"
+        />
+    
+    <ListView 
+        android:id="@+id/devices_dialog_list"
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content"/>
+    
+    <LinearLayout 
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:background="@android:drawable/divider_horizontal_bright"
+        />
+    
+    <Button 
+        android:id="@+id/negativeButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/cancel"
+        style="@android:style/Widget.Holo.Light.Button.Borderless.Small"
+        />
+
+</LinearLayout>

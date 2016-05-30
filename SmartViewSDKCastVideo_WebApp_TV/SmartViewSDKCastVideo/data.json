@@ -1,0 +1,36 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "Big Buck Bunny",
+      "playback": "0:09:56",
+      "imgUrl": "http://www.samsungdforum.com/smartview/sample/image/BigBuckBunny.jpg",
+      "url": "http://www.samsungdforum.com/smartview/sample/video/BigBuckBunny.mp4",
+      "views": 0
+    },
+    {
+      "id": 2,
+      "title": "Elephant Dream",
+      "playback": "0:10:53",
+      "imgUrl": "http://www.samsungdforum.com/smartview/sample/image/ElephantsDream.jpg",
+      "url": "http://www.samsungdforum.com/smartview/sample/video/ElephantsDream.mp4",
+      "views": 0
+    },
+    {
+      "id": 3,
+      "title": "Sintel",
+      "playback": "0:14:48",
+      "imgUrl": "http://www.samsungdforum.com/smartview/sample/image/Sintel.jpg",
+      "url": "http://www.samsungdforum.com/smartview/sample/video/Sintel.mp4",
+      "views": 0
+    },
+    {
+      "id": 4,
+      "title": "Tears of Steel",
+      "playback": "0:12:14",
+      "imgUrl": "http://www.samsungdforum.com/smartview/sample/image/TearsOfSteel.jpg",
+      "url": "http://www.samsungdforum.com/smartview/sample/video/TearsOfSteel.mp4",
+      "views": 0
+    }
+  ]
+}

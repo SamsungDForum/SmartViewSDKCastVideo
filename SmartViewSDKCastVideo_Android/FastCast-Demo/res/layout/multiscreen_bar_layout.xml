@@ -1,0 +1,67 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="${relativePackage}.${activityClass}"
+    android:background="@android:color/black" >
+
+    <FrameLayout 
+        android:id="@+id/icon_container"
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content">
+    	
+	    <ImageView 
+	        android:id="@+id/stop_icon"
+	        android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:src="@drawable/stop_icon"
+	    	android:visibility="gone"
+	    	android:paddingLeft="10dp"
+	    	android:paddingRight="10dp"
+	    	android:paddingTop="13dp" />
+	    
+	    <ImageView 
+	        android:id="@+id/pause_icon"
+	        android:layout_width="wrap_content"
+	    	android:layout_height="wrap_content"
+	    	android:src="@drawable/pause_icon"
+	    	android:visibility="gone"
+	    	android:paddingLeft="10dp"
+	    	android:paddingRight="10dp"
+	    	android:paddingTop="13dp" />
+	    
+	    <ImageView 
+	        android:id="@+id/playing_icon"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:paddingLeft="10dp"
+	        android:paddingRight="10dp"
+	        android:paddingTop="13dp"
+	        android:src="@drawable/playing_icon"
+	        android:visibility="gone" />
+        
+    </FrameLayout>
+    
+    
+    <TextView 
+        android:id="@+id/video_title"
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:text="@string/app_name"
+    	android:textColor="@android:color/white"
+    	android:layout_toRightOf="@id/icon_container"
+    	android:layout_centerVertical="true"
+    	android:layout_margin="10dp"/>
+    
+    <ImageView 
+        android:id="@+id/cast_button"
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:src="@drawable/cast_disabled"
+    	android:layout_alignParentRight="true"
+    	android:layout_alignParentEnd="true"
+    	android:padding="10dp"
+    	android:visibility="visible"/>
+    
+    
+</RelativeLayout>

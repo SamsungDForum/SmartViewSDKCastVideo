@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SmartViewSDK Cast Video</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_player">SmartViewSDK Cast Video</string>
+    <string name="select_video">Select video:</string>
+    <string name="send_to_tv">Send to TV</string>
+    <string name="loading">Loading&#8230;</string>
+    <string name="searching">Searching&#8230;</string>
+    <string name="casting_to_tv">Casting on TV</string>
+    <string name="continue_on_mobile">Continue on mobile</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="access_denied">Access denied</string>
+    <string name="maximum_limit">Maximum limit of connected users reached</string>
+    <string name="wifi_not_connected">Wifi not connected</string>
+    <string name="connect_to_wifi">Connect to Wifi?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="reclaim">Reclaim</string>
+    <string name="disconnect_leave_remote">Disconnect</string>
+    <string name="app_not_found_title">App not found</string>
+    <string name="app_not_found_body">Application on TV not found</string>
+    <string name="error">Error</string>
+    <string name="devices_not_found">Devices not found</string>
+    <string name="devices_not_found_body">Could not discover any devices</string>
+    <string name="no_smartview_devices">Missing a device?</string>
+    <string name="no_devices_found">No devices found</string>
+    <string name="tvguide_title">Device Connection Guide</string>
+    <string name="tvguide_subtitle">Samsung Smart TVs</string>
+    <string name="tvguide_intro">Follow these steps to connect MultiScreen Player to your TV without a dongle!</string>
+    <string name="tvguide_step1">Step 1.</string>
+    <string name="tvguide_step2">Step 2.</string>
+    <string name="tvguide_step3">Step 3.</string>
+    <string name="tvguide_step1_info">Verify your TV and mobile network connections are working</string>
+    <string name="tvguide_step2_info">Make sure they are both on the same network</string>
+    <string name="tvguide_step3_info">Check that your TV is compatible</string>
+    <string name="tvguide_golink">(<u>Go link</u>)</string>
+    <string name="tvguide_link">http://www.samsungdforum.com/TizenGuide/tizen4671/index.html</string>
+    <string name="devicedialog_title">Connect to device</string>
+
+</resources>
