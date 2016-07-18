@@ -3,6 +3,12 @@ SmartViewSDKVideoPlayer apply with Smart View SDK UX Guidline and follow SDK dev
 
 ##Change List
 
+### v3.0
+Updated items
+
+  - WoW (Wake on WirelessLAN) was added.   (my comment : Shoud add link https://www.samsungdforum.com/TizenGuide/tizen1731/index.html#WoW-(Wake-on-Wireless-LAN )
+
+  
 ### v2.0
 Updated items
 

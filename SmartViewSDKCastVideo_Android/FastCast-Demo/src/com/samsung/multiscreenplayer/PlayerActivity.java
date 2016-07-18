@@ -5,7 +5,10 @@
 
 package com.samsung.multiscreenplayer;
 
+import java.util.ArrayList;
+
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
@@ -13,11 +16,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.samsung.multiscreenplayer.adapter.VideoSourceAdapter;
 import com.samsung.multiscreenplayer.controller.AppController;
 import com.samsung.multiscreenplayer.controller.AppController.ViewsState;
+import com.samsung.multiscreenplayer.controller.DeviceStorageManager;
 import com.samsung.multiscreenplayer.helper.IListener;
+import com.samsung.multiscreenplayer.model.StoredDevice;
 import com.samsung.multiscreenplayer.view.MultiScreenBar;
 import com.samsung.multiscreenplayer.view.RemotePlayerView;
 import com.samsung.multiscreenplayer.view.VideoPlayer;
@@ -36,10 +42,42 @@ public class PlayerActivity extends FragmentActivity {
 	private MultiScreenBar mMultiScreenBar;
 	private RemotePlayerView mRemotePlayer;
 
+	private DeviceStorageManager deviceStorage = null;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_player);
+
+		deviceStorage = new DeviceStorageManager(this);
+
+		/*/ --------- Storage test. Remove this!----------------------
+		StoredDevice device = new StoredDevice("TestDevice", "000000",
+				Uri.parse("http://samsung.com"), "SPRC_WIFI");
+		deviceStorage.insertDevice(device, new IListener<Boolean>() {
+
+			@Override
+			public void onData(Boolean data) {
+				if (data) {
+					Toast.makeText(PlayerActivity.this, "Device Inserted", Toast.LENGTH_LONG)
+							.show();
+				} else {
+					Toast.makeText(PlayerActivity.this, "Device Exists", Toast.LENGTH_LONG).show();
+				}
+				deviceStorage.readDevices("SPRC_WIFI", new IListener<ArrayList<StoredDevice>>() {
+					@Override
+					public void onData(ArrayList<StoredDevice> data) {
+						if (!data.isEmpty()) {
+							Toast.makeText(PlayerActivity.this,
+									"Device Read: " + data.get(0).getMac(), Toast.LENGTH_LONG)
+									.show();
+						}
+						deviceStorage.clearDevices(null);
+					}
+				});
+			}
+		});
+		// -------------------------------------------------------------------------*/
 
 		AppController.init(this);
 		mAppController = AppController.instance;
@@ -65,14 +103,12 @@ public class PlayerActivity extends FragmentActivity {
 
 		ListView videoSourceList = (ListView) findViewById(R.id.videos_list);
 
-		final VideoSourceAdapter adapter = mAppController
-				.getVideoSourceAdapter();
+		final VideoSourceAdapter adapter = mAppController.getVideoSourceAdapter();
 		if (videoSourceList != null) {
 			videoSourceList.setAdapter(adapter);
 			videoSourceList.setOnItemClickListener(new OnItemClickListener() {
 				@Override
-				public void onItemClick(AdapterView<?> parent, View view,
-						int position, long id) {
+				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 					mAppController.playVideo(adapter.getItem(position));
 				}
 			});

@@ -41,5 +41,6 @@
     <string name="tvguide_golink">(<u>Go link</u>)</string>
     <string name="tvguide_link">http://www.samsungdforum.com/TizenGuide/tizen4671/index.html</string>
     <string name="devicedialog_title">Connect to device</string>
+    <string name="dialog_wakingup">Turning the TV on...</string>
 
 </resources>

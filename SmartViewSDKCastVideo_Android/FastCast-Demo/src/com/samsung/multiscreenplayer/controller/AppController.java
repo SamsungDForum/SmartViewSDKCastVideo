@@ -11,23 +11,20 @@ import java.util.Map;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Point;
-import android.graphics.drawable.AnimationDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.CountDownTimer;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
-import android.view.Display;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 
 import com.samsung.fastcast.CastManager;
@@ -35,6 +32,7 @@ import com.samsung.fastcast.OnBLEDiscoveryListener;
 import com.samsung.fastcast.OnDiscoveryListener;
 import com.samsung.fastcast.OnFCErrorListener;
 import com.samsung.fastcast.OnTVMessageListener;
+import com.samsung.fastcast.SimpleCallback;
 import com.samsung.fastcast.exceptions.FCError;
 import com.samsung.fastcast.model.CastStates;
 import com.samsung.fastcast.model.ConnectData;
@@ -45,6 +43,11 @@ import com.samsung.fastcast.msgs.SimpleTextMessage;
 import com.samsung.fastcast.msgs.StatusMessage;
 import com.samsung.fastcast.statemachine.StateChangeArgs;
 import com.samsung.fastcast.statemachine.StateChangeListener;
+import com.samsung.multiscreen.Application;
+import com.samsung.multiscreen.Client;
+import com.samsung.multiscreen.Device;
+import com.samsung.multiscreen.Error;
+import com.samsung.multiscreen.Result;
 import com.samsung.multiscreen.Service;
 import com.samsung.multiscreenplayer.R;
 import com.samsung.multiscreenplayer.adapter.ServiceAdapter;
@@ -57,6 +60,7 @@ import com.samsung.multiscreenplayer.helper.VideoSourceRetriever;
 import com.samsung.multiscreenplayer.model.BaseCastDevice;
 import com.samsung.multiscreenplayer.model.GuideDevice;
 import com.samsung.multiscreenplayer.model.SmartViewDevice;
+import com.samsung.multiscreenplayer.model.StoredDevice;
 import com.samsung.multiscreenplayer.model.VideoSource;
 import com.samsung.multiscreenplayer.view.MultiScreenBar;
 import com.samsung.multiscreenplayer.view.RemotePlayerView;
@@ -117,12 +121,15 @@ public class AppController {
 	private VideoSource mCurrentVideoSource;
 	private long mCurrentVideoPosition;
 	private int mTVVolume = 0;
+	private final int WOW_TIMEOUT = 15000;
 
 	private int mCurrentOrientation = Configuration.ORIENTATION_PORTRAIT;
 
 	private boolean mWasStop = false;
 
 	private CountDownTimer discoveryTimeoutTimer;
+	private ProgressDialog wakingDialog;
+	private DeviceStorageManager mStorageHelper;
 
 	// Device discovery listener
 	private OnDiscoveryListener mDiscoveryListener = new OnDiscoveryListener() {
@@ -137,6 +144,47 @@ public class AppController {
 		public void onServiceFound(Service service) {
 			mServiceAdapter.add(service);
 			setMultiScreenBarState();
+			saveDeviceInfo(service, getCurrentWifiName());
+		}
+	};
+	
+	private OnFCErrorListener mErrorListener = new OnFCErrorListener() {
+		@Override
+		public void OnError(FCError error) {
+			// Here you can handle msf lib errors
+			if (error.getCode() == 403) { // Access denied error
+				disconnectFromTv(false);
+				DialogHelper.showAccessDeniedDialog(mContext);
+			} else if (error.getCode() == 200) {
+				if (error.getMsfError().getCode() == 404) { // No TV app
+															// found error
+					if (mLoadListener != null) {
+						mLoadListener.onData(false);
+					}
+					DialogHelper.showTVAppNotFound(mContext);
+				}
+			} else if (error.getCode() == 110) { // timeout (No TV app
+													// installed?)
+				if (mLoadListener != null) {
+					mLoadListener.onData(false);
+				}			
+				DialogHelper.showTVAppNotFound(mContext);
+			} else if (error.getCode() == 404) {
+				if (error.getMessage() != null) {
+					showErrorDialog(error.getMessage());
+				}
+				mCastManager.disconnect();
+			} else if (error.getCode() == 120) {
+				// WOW error
+				wakingDialog.dismiss();
+				if (error.getMessage() != null) {
+					showErrorDialog(error.getMessage());
+				}
+			} else if (error.getCode() != 211) {
+				if (error.getMessage() != null) {
+					showErrorDialog(error.getMessage());
+				}
+			}
 		}
 	};
 
@@ -487,8 +535,12 @@ public class AppController {
 		mContext = ctx;
 		mCastManager = CastManager.getInstance();
 		mServiceAdapter = new ServiceAdapter(ctx);
+		wakingDialog = new ProgressDialog(mContext);
+		wakingDialog.setMessage(mContext.getText(R.string.dialog_wakingup));
+		wakingDialog.setCancelable(false);
 
 		mDevicesDialog = new DevicesDialogFragment(mServiceAdapter);
+		mStorageHelper = new DeviceStorageManager(ctx);
 	}
 
 	private void init() {
@@ -516,39 +568,7 @@ public class AppController {
 		mCastManager.addOnBLEDiscoveryListener(mBLEListener);
 
 		// Add on errors listener
-		mCastManager.addOnFCErrorListener(new OnFCErrorListener() {
-			@Override
-			public void OnError(FCError error) {
-				// Here you can handle msf lib errors
-				if (error.getCode() == 403) { // Access denied error
-					disconnectFromTv(false);
-					DialogHelper.showAccessDeniedDialog(mContext);
-				} else if (error.getCode() == 200) {
-					if (error.getMsfError().getCode() == 404) { // No TV app
-																// found error
-						if (mLoadListener != null) {
-							mLoadListener.onData(false);
-						}
-						DialogHelper.showTVAppNotFound(mContext);
-					}
-				} else if (error.getCode() == 110) { // timeout (No TV app
-														// installed?)
-					if (mLoadListener != null) {
-						mLoadListener.onData(false);
-					}
-					DialogHelper.showTVAppNotFound(mContext);
-				} else if (error.getCode() == 404) {
-					if (error.getMessage() != null) {
-						showErrorDialog(error.getMessage());
-					}
-					mCastManager.disconnect();
-				} else if (error.getCode() != 211) {
-					if (error.getMessage() != null) {
-						showErrorDialog(error.getMessage());
-					}
-				}
-			}
-		});
+		mCastManager.addOnFCErrorListener(mErrorListener);
 
 		mVideoSourceAdapter = new VideoSourceAdapter(mContext);
 
@@ -669,13 +689,14 @@ public class AppController {
 	}
 
 	private void stopDiscovery() {
-		mCastManager.stopDiscovery();
-		mServiceAdapter.searchStop();
+		mCastManager.stopDiscovery();		
+		// mServiceAdapter.searchStop();
 		mDevicesDialog.setProgressBarVisibility(false);
 	}
 
 	private void discoveryTimeout() {
 		stopDiscovery();
+		loadStandbyDevices(getCurrentWifiName());
 	}
 
 	private void setMultiScreenBarState() {
@@ -769,13 +790,13 @@ public class AppController {
 	 */
 	private void showSearchDialog() {
 		FragmentManager fragmentManager = ((FragmentActivity) mContext)
-				.getSupportFragmentManager();		
-		
+				.getSupportFragmentManager();
+
 		mDevicesDialog.setDevicesDialogListener(new DevicesDialogListener() {
 
 			@Override
 			public void onItemClicked(int index) {
-				
+
 				BaseCastDevice device = mServiceAdapter.getItem(index);
 
 				if (device instanceof SmartViewDevice) {
@@ -784,6 +805,24 @@ public class AppController {
 				} else if (device instanceof GuideDevice) {
 					showGuideDialog();
 					mDevicesDialog.dismiss();
+				} else if (device instanceof StoredDevice) {
+					StoredDevice storedDevice = (StoredDevice) device;
+					String mac = storedDevice.getMac();
+					if (mac != null && !mac.isEmpty()) {
+
+						wakingDialog.show();
+
+						mCastManager.wakeDevice(mac, storedDevice.getUri(),
+								WOW_TIMEOUT, new SimpleCallback<Service>() {
+
+									@Override
+									public void run(Service result) {
+										smartDeviceClicked(result);
+										wakingDialog.cancel();
+										mDevicesDialog.dismiss();																				
+									}
+								});
+					}
 				}
 			}
 
@@ -795,7 +834,7 @@ public class AppController {
 		});
 		mDevicesDialog.show(fragmentManager, "DevicesDialog");
 
-	}
+	}		
 
 	/**
 	 * Shows dialog with device connection guide
@@ -865,4 +904,81 @@ public class AppController {
 				});
 		builder.show();
 	}
+
+	private boolean checkIfDeviceIsOn(StoredDevice device) {
+		/*
+		 * Check if device loaded from db is already on the discovered devices
+		 * list
+		 */
+
+		for (int i = 0; i < mServiceAdapter.getCount(); i++) {
+
+			if (mServiceAdapter.getItem(i) instanceof SmartViewDevice) {
+
+				SmartViewDevice discoveredDevice = (SmartViewDevice) mServiceAdapter
+						.getItem(i);
+				if (discoveredDevice != null
+						&& (discoveredDevice.getData().getId().equals(device
+								.getId())))
+					return true;
+
+			}
+		}
+
+		return false;
+	}
+
+	private void saveDeviceInfo(Service device, final String ssid) {
+
+		final String name = device.getName();
+		final Uri uri = device.getUri();
+		final String id = device.getId();
+
+		device.getDeviceInfo(new Result<Device>() {
+
+			@Override
+			public void onSuccess(Device device) {
+
+				final String mac = device.getWifiMac();
+
+				if (mac != null && !mac.isEmpty() && id != null) {
+
+					StoredDevice deviceInfo = new StoredDevice(name
+							+ " (standby)", mac, uri, ssid, id);
+					mStorageHelper.insertDevice(deviceInfo);
+
+				}
+			}
+
+			@Override
+			public void onError(Error error) {
+			}
+		});
+
+	}
+
+	private void loadStandbyDevices(String networkId) {
+
+		mStorageHelper.readDevices(networkId, new IListener<ArrayList<StoredDevice>>() {
+
+			@Override
+			public void onData(ArrayList<StoredDevice> result) {
+				for (StoredDevice device : result) {
+					if (!checkIfDeviceIsOn(device))
+						mServiceAdapter.add(device);
+				}
+
+				mServiceAdapter.searchStop();
+			}
+		});
+
+	}
+
+	private String getCurrentWifiName() {
+		WifiManager wifiMgr = (WifiManager) mContext
+				.getSystemService(Context.WIFI_SERVICE);
+		WifiInfo wifiInfo = wifiMgr.getConnectionInfo();
+		return wifiInfo.getSSID();
+	}
+
 }
