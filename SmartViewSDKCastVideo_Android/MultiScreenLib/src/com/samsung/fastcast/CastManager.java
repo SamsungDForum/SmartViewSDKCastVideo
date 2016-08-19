@@ -21,6 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Handler;
 import android.widget.ArrayAdapter;
 
@@ -91,11 +92,11 @@ public class CastManager extends StateMachine<CastStates> {
 				new Handler(mContext.getMainLooper()).post(new Runnable() {
 				    @Override
 				    public void run() {
+				    	cleanUpConnection();
 						FCError libError = new FCError(110, "Connection Timeout. Client can't connect.");
 						for (OnFCErrorListener listener : CastManager.this.mFCErrorListeners) {
 							listener.OnError(libError);
-						}
-						reset();
+						}						
 				    }
 				});
 			}
@@ -210,6 +211,51 @@ public class CastManager extends StateMachine<CastStates> {
 	public void stopDiscovery() {
 		mSearch.stop();
 		mSearch.stopUsingBle();
+	}
+	
+	/**
+	 * Wakes up device with specified MAC address. It only switch device on.
+	 * 
+	 * @param mac MAC address of device to wake up.
+	 */
+	public void wakeDevice(String mac) {
+		Service.WakeOnWirelessLan(mac);
+	}
+	
+	/**
+	 * Wakes up device and connect to it to retrieve Service object associated with this device.
+	 * 
+	 * @param mac MAC address of device to wake up
+	 * @param uri Uri of service on device (should be stored with MAC earlier)
+	 * @param timeout Custom connection timeout
+	 * @param callback When device is woke up Service object will be returned by this callback
+	 */
+	public void wakeDevice(String mac, final Uri uri, int timeout, final SimpleCallback<Service> callback) {
+		Service.WakeOnWirelessAndConnect(mac, uri, timeout, new Result<Service>() {
+			@Override
+			public void onError(Error arg0) {
+				FCError libError = new FCError(120, "WOW Timeout. Wake on WiFi failed.");
+				for (OnFCErrorListener listener : CastManager.this.mFCErrorListeners) {
+					listener.OnError(libError);
+				}
+			}
+			@Override
+			public void onSuccess(Service service) {
+				callback.run(service);
+			}
+		});
+	}
+	
+	/**
+	 * Wakes up device and connect to it to retrieve Service object associated with this device.
+	 * Default timeout is set to 60000
+	 * 
+	 * @param mac MAC address of device to wake up
+	 * @param uri Uri of service on device (should be stored with MAC earlier)
+	 * @param callback When device is woke up Service object will be returned by this callback
+	 */
+	public void wakeDevice(String mac, final Uri uri, final SimpleCallback<Service> callback) {
+		wakeDevice(mac, uri, Service.DEFAULT_WOW_TIMEOUT_VALUE, callback);
 	}
 
 	/**

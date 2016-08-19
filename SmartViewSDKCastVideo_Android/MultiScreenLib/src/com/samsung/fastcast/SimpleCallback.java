@@ -14,12 +14,12 @@ package com.samsung.fastcast;
  *
  * @param <T>
  */
-interface SimpleCallback<T> {
-	/**
-	 * Called after action is done
-	 * 
-	 * @param result
-	 *            result of performed action
-	 */
-	void run(T result);
+public interface SimpleCallback<T> {
+    /**
+     * Called after action is done
+     * 
+     * @param result
+     *            result of performed action
+     */
+    void run(T result);
 }
