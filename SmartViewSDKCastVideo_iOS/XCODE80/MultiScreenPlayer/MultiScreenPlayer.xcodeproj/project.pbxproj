@@ -1,0 +1,415 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B7676BDC1DB0A7F70045B25C /* SmartView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7676BDA1DB0A7EA0045B25C /* SmartView.framework */; };
+		B7676BDD1DB0A7F70045B25C /* SmartView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B7676BDA1DB0A7EA0045B25C /* SmartView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E9BD8B791C7D3DB700CB9475 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9BD8B781C7D3DB700CB9475 /* MediaPlayer.framework */; };
+		E9BD8C421C895A6300CB9475 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9BD8C281C895A6200CB9475 /* Assets.xcassets */; };
+		E9BD8C431C895A6300CB9475 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9BD8C2A1C895A6300CB9475 /* LaunchScreen.storyboard */; };
+		E9BD8C441C895A6300CB9475 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9BD8C2C1C895A6300CB9475 /* Main.storyboard */; };
+		E9BD8C451C895A6300CB9475 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BD8C301C895A6300CB9475 /* AppDelegate.m */; };
+		E9BD8C461C895A6300CB9475 /* ContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BD8C321C895A6300CB9475 /* ContentTableViewCell.m */; };
+		E9BD8C471C895A6300CB9475 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BD8C341C895A6300CB9475 /* DataManager.m */; };
+		E9BD8C481C895A6300CB9475 /* TvSelectViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BD8C361C895A6300CB9475 /* TvSelectViewViewController.m */; };
+		E9BD8C491C895A6300CB9475 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BD8C381C895A6300CB9475 /* Util.m */; };
+		E9BD8C4A1C895A6300CB9475 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BD8C3A1C895A6300CB9475 /* ViewController.m */; };
+		E9BD8C4D1C895A6300CB9475 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BD8C3F1C895A6300CB9475 /* main.m */; };
+		E9BD8C4E1C895A6300CB9475 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = E9BD8C411C895A6300CB9475 /* data.json */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E9BD8B841C7D8BBF00CB9475 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B7676BDD1DB0A7F70045B25C /* SmartView.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B7676BDA1DB0A7EA0045B25C /* SmartView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SmartView.framework; path = "MultiScreenPlayer/lib/iphoneos+iphonesimulator/SmartView.framework"; sourceTree = "<group>"; };
+		E9BD8A761C782C5300CB9475 /* MultiScreenPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultiScreenPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9BD8B781C7D3DB700CB9475 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		E9BD8C281C895A6200CB9475 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
+		E9BD8C2B1C895A6300CB9475 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E9BD8C2D1C895A6300CB9475 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		E9BD8C2F1C895A6300CB9475 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E9BD8C301C895A6300CB9475 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E9BD8C311C895A6300CB9475 /* ContentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentTableViewCell.h; sourceTree = "<group>"; };
+		E9BD8C321C895A6300CB9475 /* ContentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentTableViewCell.m; sourceTree = "<group>"; };
+		E9BD8C331C895A6300CB9475 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		E9BD8C341C895A6300CB9475 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		E9BD8C351C895A6300CB9475 /* TvSelectViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TvSelectViewViewController.h; sourceTree = "<group>"; };
+		E9BD8C361C895A6300CB9475 /* TvSelectViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TvSelectViewViewController.m; sourceTree = "<group>"; };
+		E9BD8C371C895A6300CB9475 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		E9BD8C381C895A6300CB9475 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		E9BD8C391C895A6300CB9475 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E9BD8C3A1C895A6300CB9475 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E9BD8C3F1C895A6300CB9475 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MultiScreenPlayer/main.m; sourceTree = "<group>"; };
+		E9BD8C411C895A6300CB9475 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		E9BD9AF11C8D17ED00CB9475 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MultiScreenPlayer/Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E9BD8A731C782C5300CB9475 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9BD8B791C7D3DB700CB9475 /* MediaPlayer.framework in Frameworks */,
+				B7676BDC1DB0A7F70045B25C /* SmartView.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E9BD8A6D1C782C5300CB9475 = {
+			isa = PBXGroup;
+			children = (
+				E9BD8C2C1C895A6300CB9475 /* Main.storyboard */,
+				E9BD8C2E1C895A6300CB9475 /* Class */,
+				E9BD8C401C895A6300CB9475 /* resource */,
+				E9BD8C521C895C7200CB9475 /* Supporting Files */,
+				E9BD8B7A1C7D3DC400CB9475 /* framework */,
+				E9BD8A771C782C5300CB9475 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E9BD8A771C782C5300CB9475 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E9BD8A761C782C5300CB9475 /* MultiScreenPlayer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E9BD8B7A1C7D3DC400CB9475 /* framework */ = {
+			isa = PBXGroup;
+			children = (
+				B7676BDA1DB0A7EA0045B25C /* SmartView.framework */,
+				E9BD8B781C7D3DB700CB9475 /* MediaPlayer.framework */,
+			);
+			name = framework;
+			sourceTree = "<group>";
+		};
+		E9BD8C291C895A6300CB9475 /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				E9BD8C2A1C895A6300CB9475 /* LaunchScreen.storyboard */,
+			);
+			name = Base.lproj;
+			path = ../Base.lproj;
+			sourceTree = "<group>";
+		};
+		E9BD8C2E1C895A6300CB9475 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				E9BD8C391C895A6300CB9475 /* ViewController.h */,
+				E9BD8C3A1C895A6300CB9475 /* ViewController.m */,
+				E9BD8C351C895A6300CB9475 /* TvSelectViewViewController.h */,
+				E9BD8C361C895A6300CB9475 /* TvSelectViewViewController.m */,
+				E9BD8C311C895A6300CB9475 /* ContentTableViewCell.h */,
+				E9BD8C321C895A6300CB9475 /* ContentTableViewCell.m */,
+				E9BD8C331C895A6300CB9475 /* DataManager.h */,
+				E9BD8C341C895A6300CB9475 /* DataManager.m */,
+				E9BD8C371C895A6300CB9475 /* Util.h */,
+				E9BD8C381C895A6300CB9475 /* Util.m */,
+				E9BD8C2F1C895A6300CB9475 /* AppDelegate.h */,
+				E9BD8C301C895A6300CB9475 /* AppDelegate.m */,
+			);
+			name = Class;
+			path = MultiScreenPlayer/Class;
+			sourceTree = "<group>";
+		};
+		E9BD8C401C895A6300CB9475 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				E9BD8C411C895A6300CB9475 /* data.json */,
+				E9BD8C291C895A6300CB9475 /* Base.lproj */,
+				E9BD8C281C895A6200CB9475 /* Assets.xcassets */,
+			);
+			name = resource;
+			path = MultiScreenPlayer/resource;
+			sourceTree = "<group>";
+		};
+		E9BD8C521C895C7200CB9475 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E9BD9AF11C8D17ED00CB9475 /* Info.plist */,
+				E9BD8C3F1C895A6300CB9475 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E9BD8A751C782C5300CB9475 /* MultiScreenPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E9BD8A8D1C782C5300CB9475 /* Build configuration list for PBXNativeTarget "MultiScreenPlayer" */;
+			buildPhases = (
+				E9BD8A721C782C5300CB9475 /* Sources */,
+				E9BD8A731C782C5300CB9475 /* Frameworks */,
+				E9BD8A741C782C5300CB9475 /* Resources */,
+				E9BD8B841C7D8BBF00CB9475 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MultiScreenPlayer;
+			productName = RyuMovie;
+			productReference = E9BD8A761C782C5300CB9475 /* MultiScreenPlayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E9BD8A6E1C782C5300CB9475 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = Ryu_Mac_love;
+				TargetAttributes = {
+					E9BD8A751C782C5300CB9475 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 342USS6979;
+					};
+				};
+			};
+			buildConfigurationList = E9BD8A711C782C5300CB9475 /* Build configuration list for PBXProject "MultiScreenPlayer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E9BD8A6D1C782C5300CB9475;
+			productRefGroup = E9BD8A771C782C5300CB9475 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E9BD8A751C782C5300CB9475 /* MultiScreenPlayer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E9BD8A741C782C5300CB9475 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9BD8C441C895A6300CB9475 /* Main.storyboard in Resources */,
+				E9BD8C421C895A6300CB9475 /* Assets.xcassets in Resources */,
+				E9BD8C4E1C895A6300CB9475 /* data.json in Resources */,
+				E9BD8C431C895A6300CB9475 /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E9BD8A721C782C5300CB9475 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9BD8C4A1C895A6300CB9475 /* ViewController.m in Sources */,
+				E9BD8C491C895A6300CB9475 /* Util.m in Sources */,
+				E9BD8C451C895A6300CB9475 /* AppDelegate.m in Sources */,
+				E9BD8C471C895A6300CB9475 /* DataManager.m in Sources */,
+				E9BD8C461C895A6300CB9475 /* ContentTableViewCell.m in Sources */,
+				E9BD8C4D1C895A6300CB9475 /* main.m in Sources */,
+				E9BD8C481C895A6300CB9475 /* TvSelectViewViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E9BD8C2A1C895A6300CB9475 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9BD8C2B1C895A6300CB9475 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E9BD8C2C1C895A6300CB9475 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E9BD8C2D1C895A6300CB9475 /* Base */,
+			);
+			name = Main.storyboard;
+			path = MultiScreenPlayer/Base.lproj;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E9BD8A8B1C782C5300CB9475 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E9BD8A8C1C782C5300CB9475 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E9BD8A8E1C782C5300CB9475 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: HYOJAE LEE (L6J4NPG367)";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MultiScreenPlayer/lib/iphoneos+iphonesimulator",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = MultiScreenPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.samsung.RyuMovie;
+				PRODUCT_NAME = MultiScreenPlayer;
+				PROVISIONING_PROFILE = "27ff4e81-57bd-45bd-b723-325bfa1bcbda";
+				PROVISIONING_PROFILE_SPECIFIER = Smartview_dev_wildcard;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		E9BD8A8F1C782C5300CB9475 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: HYOJAE LEE (L6J4NPG367)";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MultiScreenPlayer/lib/iphoneos+iphonesimulator",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = MultiScreenPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.samsung.RyuMovie;
+				PRODUCT_NAME = MultiScreenPlayer;
+				PROVISIONING_PROFILE = "27ff4e81-57bd-45bd-b723-325bfa1bcbda";
+				PROVISIONING_PROFILE_SPECIFIER = Smartview_dev_wildcard;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E9BD8A711C782C5300CB9475 /* Build configuration list for PBXProject "MultiScreenPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E9BD8A8B1C782C5300CB9475 /* Debug */,
+				E9BD8A8C1C782C5300CB9475 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E9BD8A8D1C782C5300CB9475 /* Build configuration list for PBXNativeTarget "MultiScreenPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E9BD8A8E1C782C5300CB9475 /* Debug */,
+				E9BD8A8F1C782C5300CB9475 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E9BD8A6E1C782C5300CB9475 /* Project object */;
+}
