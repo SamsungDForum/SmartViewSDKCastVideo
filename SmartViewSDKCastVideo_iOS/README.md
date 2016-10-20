@@ -1,3 +1,5 @@
+# SmartViewSDK CastVideo Sample App #
+
 ##Prerequisite
 
 ###1. [SmartView SDK iOS framework](http://www.samsungdforum.com/AddLibrary/SmartViewDownload):  iOS Package(Mobile)
@@ -9,19 +11,25 @@
 2. Required XCode version 7.2 for XCODE70 and version 8.0 for XCODE80
 	
 
-## Discover : Search devices around your mobile.
+###3. Discover : Search devices around your mobile.
 1. Pressing 'Cast' button in ActionBar, must start search API [ss start].
 2. Populate device list by overriding onServiceFound() & onServiceLost() listeners.
 3. Stop device discovery, by calling stop search API [ss stop].
 
-TvSelectViewController.m
+### 4.Code Snippet with Examples:
+
+## Discover ##
+
+```objective-c
+
+//Inside TvSelectViewController.m file
 
 
 ServiceSearch *ss;
 NSArray *serviceArray;
 NSMutableArray *serviceBLEArray;
 
- Application *_app;
+Application *_app;
 
 static DataManager* instance = nil;
 
@@ -73,16 +81,16 @@ return instance;
 [ss stopUsingBLE];
 }
 
+```
 
+## Launch TV application ##
 
-##launch a TV application.
+```objective-c
 
-
-DataManager.m
+// Inside DataManager.m file
 
 -(void)lunchApplicationToTv: (Service*)service
 {
-
 //   NSString *url =@"1234"; // appId or app id on tv when install
 NSString *appID = @"YcKEdWMZve.MultiScreenPlayer";
 
@@ -135,9 +143,12 @@ _connectedService = service;
 }
 /* Share Content on TV */
  [[DataManager getInstance].app publishWithEvent:@"play" message:json];
+ 
+```
 
+## API usage ##
 
-##API usage
+```objective-c
 
 - (IBAction)onRewindCastBtn:(id)sender {
 NSString *json = @"{\"keycode\":\"MediaRewind\"}";
@@ -174,11 +185,12 @@ NSString *json = [NSString stringWithFormat:@"{\"value\":%d}", (volume < 100)?++
 }
 
 
-#pragma mark Local Movie Control
+//#pragma mark Local Movie Control
 - (IBAction)onRewindBtn:(id)sender {
 float ti = moviePlayer.currentPlaybackTime;
 moviePlayer.currentPlaybackTime = ti -15;
 NSLog(@"playbackTime: %f ---> %f",ti, moviePlayer.currentPlaybackTime);
 }
 
+```objective-c
 
