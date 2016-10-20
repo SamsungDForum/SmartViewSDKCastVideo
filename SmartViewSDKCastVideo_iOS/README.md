@@ -192,5 +192,5 @@ moviePlayer.currentPlaybackTime = ti -15;
 NSLog(@"playbackTime: %f ---> %f",ti, moviePlayer.currentPlaybackTime);
 }
 
-```objective-c
+```
 
