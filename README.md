@@ -2,7 +2,7 @@
 SmartViewSDKVideoPlayer apply with Smart View SDK UX Guidline and follow SDK development best practice. Use this app as a starting point when developing your app for video cast.
 
 ## UX Guide
-  - [the UX guideline](http://developer.samsung.com/tv/design/smart-view-sdk.html)
+  - [The UX guideline](http://developer.samsung.com/tv/design/smart-view-sdk)
 
 ## Developer Guide
   - [Smart View SDK Developer Guide](http://developer.samsung.com/tv/develop/extension-libraries/smart-view-sdk/introduction)
