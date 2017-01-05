@@ -12,6 +12,9 @@ SmartViewSDKVideoPlayer apply with Smart View SDK UX Guidline and follow SDK dev
 
 ##Change List
 
+### v3.0.1
+  - update new content url
+
 ### v3.0
 Updated items
 
