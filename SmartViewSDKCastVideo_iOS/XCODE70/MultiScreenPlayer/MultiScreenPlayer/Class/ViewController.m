@@ -434,7 +434,7 @@ enum CastState{
 
 -(void)onHyperLinkButton
 {
-    NSString *urlString = @"http://www.samsungdforum.com/TizenGuide/tizen4671/index.html";
+    NSString *urlString = @"http://developer.samsung.com/tv/develop/extension-libraries/smart-view-sdk/supported-device/supported-tvs";
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
 
 }

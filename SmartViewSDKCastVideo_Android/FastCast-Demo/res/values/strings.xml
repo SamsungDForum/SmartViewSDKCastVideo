@@ -39,7 +39,7 @@
     <string name="tvguide_step2_info">Make sure they are both on the same network</string>
     <string name="tvguide_step3_info">Check that your TV is compatible</string>
     <string name="tvguide_golink">(<u>Go link</u>)</string>
-    <string name="tvguide_link">http://www.samsungdforum.com/TizenGuide/tizen4671/index.html</string>
+    <string name="tvguide_link">http://developer.samsung.com/tv/develop/extension-libraries/smart-view-sdk/supported-device/supported-tvs</string>
     <string name="devicedialog_title">Connect to device</string>
     <string name="dialog_wakingup">Turning the TV on...</string>
 
