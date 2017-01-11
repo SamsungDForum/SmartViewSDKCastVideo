@@ -61,7 +61,7 @@ static DataManager* instance = nil;
 {
     
     //   NSString *url =@"1234"; // appId or app id on tv when install
-    NSString *appID = @"YcKEdWMZve.MultiScreenPlayer";
+    NSString *appID = @"YcKEdWMZve.SmartViewSDKCastVideo";
     
     NSString *channelId = @"com.samsung.MultiScreenPlayer";
     
