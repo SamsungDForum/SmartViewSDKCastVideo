@@ -22,8 +22,8 @@ SmartViewSDKVideoPlayer apply with Smart View SDK UX Guidline and follow SDK dev
   - iOS TLS feature is supported xcode8.0 higher
   - [Android sample Guide](http://developer.samsung.com/tv/develop/extension-libraries/smart-view-sdk/sender-apps/android-sender-app/enhanced-features)
   - [iOS sample Guide](http://developer.samsung.com/tv/develop/extension-libraries/smart-view-sdk/sender-apps/ios-sender-app/enhanced-features)
-  	 > NOTE: TLS supports Android/iOS sender app and JS receiver app.
-  	 > Not support JS sender app.android 2.3.7 higher / iOS 2.3.8 higher / JS 2.3.3 higher
+ 
+    > NOTE: TLS supports Android/iOS sender app and JS receiver app. Not support JS sender app.android 2.3.7 higher / iOS 2.3.8 higher / JS 2.3.3 higher
 
 ### v3.0.1
   - update new content url
