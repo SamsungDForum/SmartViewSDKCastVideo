@@ -287,7 +287,7 @@ public class CastManager extends StateMachine<CastStates> {
 	 * 
 	 * @see com.samsung.fastcast.model.ConnectData
 	 */
-	public void connect(ConnectData remote, int timeout) {
+	public void connect(final ConnectData remote, final int timeout) {
 		if (getCurrentState() == CastStates.IDLE) {
 			mLastConnectData = remote;
 			if (mRemoteApp == null) { // try to get application from service if it
@@ -309,19 +309,35 @@ public class CastManager extends StateMachine<CastStates> {
 				mRemoteApp.setOnDisconnectListener(mDisconnectListener);
 				mRemoteApp.setOnErrorListener(mErrorListener);
 				gotoState(CastStates.CONNECTING, null);
-				Map<String, String> attributes = remote.getConnectionAttributes();
+
+				final Map<String, String> attributes = remote.getConnectionAttributes();
 				if (mConnectResult != null) {
 					mConnectResult.cancel();
 				}
 				mConnectResult = new ConnectResult();
-				if (attributes != null) {
-					mRemoteApp.connect(attributes, mConnectResult);
-				} else {
-					mRemoteApp.connect(mConnectResult);
-				}
-				mTimeoutTimer = new Timer();
-				mTimeoutTimer.schedule(new TimeoutTask(), timeout);
-				
+
+				//Set TLS enabled
+				mRemoteApp.setSecurityMode(true, new Result<Boolean>() {
+					@Override
+					public void onSuccess(Boolean aBoolean) {
+						if (attributes != null) {
+							mRemoteApp.connect(attributes, mConnectResult);
+						} else {
+							mRemoteApp.connect(mConnectResult);
+						}
+						mTimeoutTimer = new Timer();
+						mTimeoutTimer.schedule(new TimeoutTask(), timeout);
+					}
+
+					@Override
+					public void onError(Error error) {
+						FCError libError = new FCError(203,
+								"Connecting error. Can't create TLS channel.");
+						for (OnFCErrorListener listener : mFCErrorListeners) {
+							listener.OnError(libError);
+						}
+					}
+				});
 			} else {
 				FCError libError = new FCError(201,
 						"Connecting error. Can't create remote app channel.");
