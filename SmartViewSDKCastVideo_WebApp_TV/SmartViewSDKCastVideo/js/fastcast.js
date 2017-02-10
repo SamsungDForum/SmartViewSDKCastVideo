@@ -642,6 +642,9 @@ var FastCast = (function(){
         // secret, internal events
         channel.on("debugOn", onDebug);
         channel.on("debugOff", offDebug);
+        
+        //Set TLS Enable
+        channel.setSecurityMode(true);
 
         // actual connection
         channel.connect(options, onChannelConnect);
