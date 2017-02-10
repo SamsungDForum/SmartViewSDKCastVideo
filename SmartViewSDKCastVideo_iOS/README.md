@@ -8,7 +8,7 @@
 	
 ###2. Build Environment
 1. This code is developed using Objective-C language.
-2. Required XCode version 7.2 for XCODE70 and version 8.0 for XCODE80
+2. Required XCode version 7.2 for XCODE70 and version 8.2 for XCODE80
 	
 
 ###3. Discover : Search devices around your mobile.

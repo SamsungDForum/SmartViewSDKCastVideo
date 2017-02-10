@@ -68,14 +68,21 @@ static DataManager* instance = nil;
     NSLog(@"input: createApplication:(appId):%@ channelURI: %@  args: %@",appID,  channelId, nil);
     
     _app = [service createApplication:appID channelURI:channelId args:nil];
-    _app.delegate = self;
-    _app.connectionTimeout = 5.0f;
-   
-    [self notify:USER_NOTIFICATION_CONNECTING];
-    [_app connect];
     
     
-    _connectedService = service;
+    __weak DataManager *weakSelf = self;
+    [_app setSecurityModeWithSecurity:YES completionHandler:^(BOOL isSupport, NSError * _Nullable error) {
+        
+        
+        _app.delegate = weakSelf;
+        _app.connectionTimeout = 5.0f;
+        
+        [self notify:USER_NOTIFICATION_CONNECTING];
+        [_app connect];
+        _connectedService = service;
+    }];
+    
+    
     
 }
 
