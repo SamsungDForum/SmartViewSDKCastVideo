@@ -77,9 +77,13 @@ static DataManager* instance = nil;
         _app.delegate = weakSelf;
         _app.connectionTimeout = 5.0f;
         
-        [self notify:USER_NOTIFICATION_CONNECTING];
-        [_app connect];
-        _connectedService = service;
+        if (isSupport == YES)
+        {
+            [self notify:USER_NOTIFICATION_CONNECTING];
+            [_app connect];
+            _connectedService = service;
+        }
+        
     }];
     
     
