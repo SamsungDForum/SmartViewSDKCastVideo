@@ -4,7 +4,7 @@ Smart View SDK Reference app to cast video
 ## 1.	Introduction
 This document shows how to build simple VOD Multi Screen application using Multi Screen Framework 2.0. Thanks to FastCast library described in other document this task should be easy to perform on any existing VOD application. 
 
-###How to import android studio
+### How to import android studio
 ---
 1. Select "import project(Eclipse ADT,Gradle,etc..)
 2. Choose "FastCast-Demo" folder
@@ -13,12 +13,13 @@ This document shows how to build simple VOD Multi Screen application using Multi
 5. Build & run
 
 
-###Prerequisites
+### Prerequisites
 
 ----------
 
 We assume that you have Eclipse IDE and Android SDK installed. To add Multi Screen support to any application you should use our FastCast library. Please add “fastcast.jar” file to your Android application “libs” folder. From now you can use API described in Library document.
-###Application overview
+
+### Application overview
 
 ----------
 
@@ -41,23 +42,23 @@ Android activity, which creates and initializes application controller and gives
 ----------
 Bridge between FastCast library and rest of application. Controls view states (list, player local and player casting), initializes CastManager from FastCast library. Handles in-app connection with TV, showing search TVs list, disconnections (by disconnect options dialog) and error dialogs. Listens for CastManager state changes. Receives TV messages (ie. TV status) and controls playback using libs RemoteController (play/pause, rewind, seek, starts playback, volume control).
 
-###Video List
+### Video List
 ----------
 View that displays a list of movies available to play. Each element contains video name, thumbnail, duration and views count. After clicking video source from list, plays it (locally or remotely) and switches to player view state (if not in it). Visible in every view.
 
-###Local Video Player
+### Local Video Player
 ----------
 View that contains androids VideoView widget. It handles videos loading, shows player controls, controls playback and shows loading screen. Behaves like standard video player with custom controls. Visible when application is not connected to TV and in player local view state.
 
-###Remote Player
+### Remote Player
 ----------
 View similarly looking like local video player. Visible when in player casting view state (TV is connected). Shows video thumbnail, video playback controls, which behave as TVs remote controller. Displays current TVs seek position and video duration. 
 
-###Multi-screen Bar
+### Multi-screen Bar
 ----------
 Top application action bar view, which displays cast icon.  When connected to TV multi-screen bar displays also currently played video on TV and in list view state current TVs playback status.
 
-###Helpers
+### Helpers
 ----------
 Pack of helpers for downloading thumbnails, available video source elements, generic listeners and displaying error dialogs.
 
@@ -88,7 +89,7 @@ After that controller sets ArrayAdapter<Service> to CastManager’s setServiceAd
 	// pass your adapter to library
 	castManager.setServiceAdapter(adapter);
 
-###Performing discovery and TVs list
+### Performing discovery and TVs list
 ----------
 After initialization and setting service adapter, when user clicks in-app cast button, controller starts discovering TVs. 
 
