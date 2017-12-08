@@ -1,17 +1,17 @@
 # SmartViewSDK CastVideo Sample App #
 
-##Prerequisite
+## Prerequisite
 
-###1. [SmartView SDK iOS framework](http://www.samsungdforum.com/AddLibrary/SmartViewDownload):  iOS Package(Mobile)
+### 1. [SmartView SDK iOS framework](http://www.samsungdforum.com/AddLibrary/SmartViewDownload):  iOS Package(Mobile)
 	
 	add smartview.framework
 	
-###2. Build Environment
+### 2. Build Environment
 1. This code is developed using Objective-C language.
 2. Required XCode version 7.2 for XCODE70 and version 8.2 for XCODE80
 	
 
-###3. Discover : Search devices around your mobile.
+### 3. Discover : Search devices around your mobile.
 1. Pressing 'Cast' button in ActionBar, must start search API [ss start].
 2. Populate device list by overriding onServiceFound() & onServiceLost() listeners.
 3. Stop device discovery, by calling stop search API [ss stop].
