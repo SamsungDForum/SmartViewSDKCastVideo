@@ -13,7 +13,7 @@ SmartViewSDKVideoPlayer apply with Smart View SDK UX Guidline and follow SDK dev
 ## SmartViewSDK SDK Download
   - [SmartView SDK Download](http://developer.samsung.com/tv/develop/tools/extension-libraries/smartview-sdk-download)
 
-##Change List
+## Change List
 
 ### v3.1.0
   - Add TLS feature
